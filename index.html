@@ -3,292 +3,511 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guia Digital – Primeiros passos na Irlanda (Cork)</title>
+<title>Guia Irlanda – O que eu faço agora?</title>
+<meta name="description" content="Responda algumas perguntas e veja, em português simples, o próximo passo para resolver PPS, MyGovID e Revenue na Irlanda.">
 <style>
-  :root { --bg:#fff; --fg:#1a1a1a; --muted:#4a4a4a; --accent:#0b5394; --card:#f4f7fb; --warn:#fff4e0; --warn-b:#b45f06; --ok:#2e7d32; --fs:18px; }
-  body.contraste { --bg:#000; --fg:#fff; --muted:#ddd; --accent:#ffeb3b; --card:#111; --warn:#222; --warn-b:#ffeb3b; --ok:#7CFC00; }
+  :root { --bg:#f6f8fb; --card:#fff; --fg:#17202a; --muted:#4b5563; --accent:#0b5394; --accent-fg:#fff; --soft:#e8f0fa; --warn:#fff4e0; --warn-b:#b45f06; --ok:#2e7d32; --ok-soft:#e8f5e9; --fs:18px; }
+  body.contraste { --bg:#000; --card:#000; --fg:#fff; --muted:#ddd; --accent:#ffeb3b; --accent-fg:#000; --soft:#1a1a1a; --warn:#1a1a1a; --warn-b:#ffeb3b; --ok:#7cfc00; --ok-soft:#102010; }
   * { box-sizing:border-box; }
   html { font-size:var(--fs); }
-  body { margin:0; font-family:system-ui, Arial, sans-serif; line-height:1.6; background:var(--bg); color:var(--fg); }
+  body { margin:0; font-family:system-ui, "Segoe UI", Arial, sans-serif; line-height:1.55; background:var(--bg); color:var(--fg); }
   a { color:var(--accent); }
-  :focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
-  .pular { position:absolute; left:-999px; } .pular:focus { left:8px; top:8px; background:var(--bg); padding:8px; z-index:9; }
-  header, main, footer { max-width:860px; margin:0 auto; padding:16px; }
-  header h1 { margin:.2em 0; font-size:1.6rem; }
-  .barra { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
-  button { font:inherit; padding:10px 16px; min-height:44px; border:2px solid var(--accent); background:var(--bg); color:var(--accent); border-radius:8px; cursor:pointer; }
-  button:hover { background:var(--card); }
-  a.botao { display:inline-flex; align-items:center; padding:10px 16px; min-height:44px; border:2px solid var(--accent); border-radius:8px; text-decoration:none; font-weight:bold; }
-  a.botao[hidden] { display:none; }
-  .progresso { background:var(--card); border-radius:8px; padding:12px; margin:12px 0; }
-  progress { width:100%; height:20px; }
-  section.etapa { background:var(--card); border-radius:12px; padding:16px 20px; margin:20px 0; border-left:6px solid var(--accent); }
-  section.etapa.feita { border-left-color:var(--ok); }
-  .etapa h2 { margin-top:0; font-size:1.3rem; }
-  .num { display:inline-block; width:2em; height:2em; line-height:2em; text-align:center; border-radius:50%; background:var(--accent); color:var(--bg); margin-right:8px; }
+  :focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  [hidden] { display:none !important; }
+  .pular { position:absolute; left:-999px; } .pular:focus { left:8px; top:8px; background:var(--card); padding:8px; z-index:9; }
+  .topo { display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto; padding:12px 16px; }
+  .marca { font-weight:700; color:var(--accent); }
+  .opcoes { display:flex; gap:6px; }
+  main { max-width:760px; margin:0 auto; padding:0 16px 40px; }
+  h1 { font-size:1.75rem; line-height:1.25; margin:.4em 0 .3em; }
+  h2 { font-size:1.35rem; line-height:1.3; margin:.2em 0 .5em; }
+  h1:focus, h2:focus { outline:none; }
+  .card { background:var(--card); border-radius:16px; padding:22px; margin:16px 0; box-shadow:0 1px 3px rgba(0,0,0,.08); border:1px solid rgba(0,0,0,.06); }
+  body.contraste .card { border:2px solid var(--fg); }
+  .lead { font-size:1.1rem; color:var(--muted); }
+  button, .botao { font:inherit; min-height:48px; padding:10px 18px; border-radius:12px; border:2px solid var(--accent); background:var(--card); color:var(--accent); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:600; }
+  button.principal, .botao.principal { background:var(--accent); color:var(--accent-fg); }
+  button.pequeno { min-height:44px; padding:6px 12px; font-size:.85rem; }
+  .atalhos { display:grid; gap:10px; margin-top:12px; }
+  .atalhos button { justify-content:flex-start; text-align:left; width:100%; }
+  .respostas { display:grid; gap:10px; margin-top:18px; }
+  .respostas button { width:100%; font-size:1.1rem; min-height:56px; }
+  .ajuda { background:var(--soft); border-radius:10px; padding:10px 14px; margin-top:12px; color:var(--fg); }
+  .barra { height:10px; background:var(--soft); border-radius:99px; overflow:hidden; margin:6px 0 2px; }
+  .barra span { display:block; height:100%; background:var(--accent); width:0; transition:width .3s; }
+  .contador { font-size:.9rem; color:var(--muted); }
+  .voltar { margin-top:16px; border:none; padding-left:0; background:none; }
+  .tarefa { border-left:6px solid var(--accent); }
+  .tarefa.feita { border-left-color:var(--ok); }
+  .tarefa.agora { box-shadow:0 0 0 3px var(--accent); }
+  .etiqueta { display:inline-block; font-size:.8rem; font-weight:700; padding:2px 10px; border-radius:99px; background:var(--soft); color:var(--accent); margin-bottom:6px; }
+  .tarefa.agora .etiqueta { background:var(--accent); color:var(--accent-fg); }
+  .tarefa.feita .etiqueta { background:var(--ok-soft); color:var(--ok); }
+  .tarefa h3 { margin:.1em 0 .3em; font-size:1.2rem; }
+  .porque { color:var(--muted); margin:0 0 8px; }
+  details { margin:6px 0; }
+  summary { cursor:pointer; font-weight:600; min-height:44px; display:flex; align-items:center; color:var(--accent); }
+  summary::before { content:'▸'; margin-right:8px; }
+  details[open] summary::before { content:'▾'; }
+  ol.passos { padding-left:0; list-style:none; margin:6px 0; }
   ol.passos li { margin:10px 0; }
-  ol.passos label { display:block; position:relative; padding-left:36px; cursor:pointer; }
-  ol.passos input { position:absolute; left:0; top:2px; width:24px; height:24px; margin:0; }
-  .alerta { background:var(--warn); border:2px solid var(--warn-b); border-radius:8px; padding:10px 14px; margin:12px 0; }
-  .alerta strong { color:var(--warn-b); }
-  dl dt { font-weight:bold; margin-top:12px; }
-  dl dd { margin-left:0; color:var(--muted); }
-  .en { font-style:italic; }
-  input[type=search] { font:inherit; width:100%; padding:10px; min-height:44px; border:2px solid var(--muted); border-radius:8px; background:var(--bg); color:var(--fg); }
-  details { margin:8px 0; } summary { cursor:pointer; font-weight:bold; min-height:44px; display:flex; align-items:center; }
-  dialog { max-width:520px; border:3px solid var(--accent); border-radius:12px; background:var(--bg); color:var(--fg); padding:20px; }
+  ol.passos label { display:block; position:relative; padding-left:38px; cursor:pointer; }
+  ol.passos input { position:absolute; left:0; top:2px; width:26px; height:26px; margin:0; }
+  ul.leve { margin:6px 0; padding-left:22px; }
+  .cuidado { background:var(--warn); border-left:4px solid var(--warn-b); border-radius:8px; padding:10px 14px; margin:10px 0; }
+  .termo { font:inherit; font-weight:600; min-height:0; padding:0 4px; border:none; border-bottom:2px dotted var(--accent); border-radius:0; background:none; color:var(--accent); display:inline; }
+  .definicao { display:block; background:var(--soft); border-radius:8px; padding:8px 12px; margin:6px 0; font-size:.95rem; }
+  .acoes { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+  .parabens { background:var(--ok-soft); border:2px solid var(--ok); }
+  dialog { max-width:520px; width:calc(100% - 32px); border:none; border-radius:16px; background:var(--card); color:var(--fg); padding:22px; }
+  body.contraste dialog { border:2px solid var(--fg); }
   dialog::backdrop { background:rgba(0,0,0,.6); }
-  dialog input[type=text] { font:inherit; width:100%; padding:10px; min-height:44px; border:2px solid var(--muted); border-radius:8px; background:var(--bg); color:var(--fg); margin:6px 0 14px; }
-  .principal { background:var(--accent); color:var(--bg); }
-  @media print { .barra, .pular, #busca { display:none; } section.etapa { break-inside:avoid; } }
+  dialog input { font:inherit; width:100%; padding:10px; min-height:48px; border:2px solid var(--muted); border-radius:10px; background:var(--card); color:var(--fg); margin:6px 0 14px; }
+  footer { max-width:760px; margin:0 auto; padding:0 16px 30px; color:var(--muted); font-size:.85rem; }
   @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+  @media print { .topo, .voltar, .acoes, footer button { display:none !important; } .card { box-shadow:none; break-inside:avoid; } }
 </style>
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-<header>
-  <p>Guia para imigrantes e novos residentes em Cork, Irlanda</p>
-  <h1>Primeiros passos: PPS, MyGovID e Revenue</h1>
-  <p>Siga as etapas na ordem. Marque cada passo quando terminar: seu progresso fica salvo <strong>só neste aparelho</strong>.</p>
-  <div class="barra" role="group" aria-label="Opções de leitura">
-    <button type="button" id="maior" aria-label="Aumentar o tamanho do texto">A+ Texto maior</button>
-    <button type="button" id="menor" aria-label="Diminuir o tamanho do texto">A− Texto menor</button>
-    <button type="button" id="contraste" aria-pressed="false">Alto contraste</button>
-    <button type="button" onclick="window.print()">Imprimir guia</button>
+<div class="topo">
+  <span class="marca">☘ Guia Irlanda</span>
+  <div class="opcoes" role="group" aria-label="Opções de leitura">
+    <button type="button" class="pequeno" id="maior" aria-label="Aumentar a letra">A+</button>
+    <button type="button" class="pequeno" id="menor" aria-label="Diminuir a letra">A−</button>
+    <button type="button" class="pequeno" id="contraste" aria-pressed="false">Alto contraste</button>
   </div>
-  <div class="progresso" aria-live="polite">
-    <label for="barra-progresso" id="texto-progresso">Progresso: 0 de 0 passos</label>
-    <progress id="barra-progresso" value="0" max="1"></progress>
-  </div>
-</header>
+</div>
 
 <main id="conteudo">
 
-<div class="alerta" role="note">
-  <strong>Importante:</strong> este guia é um apoio em linguagem simples. Ele não substitui os sites oficiais. Regras e prazos podem mudar: sempre confira o link oficial de cada etapa.
-</div>
-
-<section class="etapa" id="e1" aria-labelledby="t1">
-  <h2 id="t1"><span class="num" aria-hidden="true">1</span>Separe os documentos</h2>
-  <p>Ter tudo em mãos antes de começar evita ter que voltar e repetir o processo.</p>
-  <ol class="passos">
-    <li><label><input type="checkbox"> Passaporte válido (e o cartão/carimbo de imigração, se você tiver: <span class="en">IRP card</span> ou <span class="en">Stamp</span>).</label></li>
-    <li><label><input type="checkbox"> Comprovante de endereço na Irlanda com seu nome (<span class="en">proof of address</span>): conta de luz, extrato de banco, contrato de aluguel ou carta oficial.</label></li>
-    <li><label><input type="checkbox"> Seu <span class="en">Eircode</span> (o "CEP" irlandês do seu endereço).</label></li>
-    <li><label><input type="checkbox"> Um número de celular que receba SMS e um e-mail que você usa sempre.</label></li>
-    <li><label><input type="checkbox"> Se já tem emprego: carta do empregador e o número de registro dele na Revenue (<span class="en">Employer Registration Number</span>). Peça ao RH.</label></li>
-  </ol>
+<!-- TELA 1: início -->
+<section id="tela-inicio" aria-labelledby="t-inicio">
+  <div class="card">
+    <h1 id="t-inicio" tabindex="-1">Chegou na Irlanda e não sabe por onde começar com os documentos?</h1>
+    <p class="lead">PPS, MyGovID, Revenue, Emergency Tax… Parece muita coisa, mas existe uma ordem certa. Responda algumas perguntas de <strong>sim ou não</strong> e eu mostro <strong>exatamente o que você precisa fazer agora</strong>, em português e sem complicação.</p>
+    <div class="acoes">
+      <button type="button" class="principal" data-ir="diagnostico">Descobrir o meu próximo passo →</button>
+    </div>
+    <p class="contador">Leva cerca de 1 minuto. Você não precisa se cadastrar.</p>
+  </div>
+  <div class="card">
+    <h2>Ou vá direto ao seu problema:</h2>
+    <div class="atalhos">
+      <button type="button" data-atalho="emergencia">💸 Meu salário veio com um desconto enorme (Emergency Tax)</button>
+      <button type="button" data-atalho="mygovid">🔒 Não consigo verificar a minha conta MyGovID</button>
+      <button type="button" data-atalho="pps">🆔 Preciso tirar o meu número PPS</button>
+    </div>
+  </div>
+  <div class="card" id="continuar" hidden>
+    <h2>Bem-vindo(a) de volta!</h2>
+    <p>Você já tem um plano salvo neste aparelho.</p>
+    <div class="acoes"><button type="button" class="principal" data-ir="plano">Continuar o meu plano</button></div>
+  </div>
 </section>
 
-<section class="etapa" id="e2" aria-labelledby="t2">
-  <h2 id="t2"><span class="num" aria-hidden="true">2</span>Peça o seu número PPS (PPSN)</h2>
-  <p>O PPSN é o seu número pessoal para trabalhar, pagar impostos e usar serviços públicos. Quase tudo depois depende dele.</p>
-  <ol class="passos">
-    <li><label><input type="checkbox"> Crie uma conta <strong>básica</strong> no MyGovID (só precisa de e-mail): <a href="https://www.mygovid.ie" target="_blank" rel="noopener">mygovid.ie</a>.</label></li>
-    <li><label><input type="checkbox"> Entre no MyWelfare com essa conta e faça o pedido do PPSN: <a href="https://services.mywelfare.ie" target="_blank" rel="noopener">services.mywelfare.ie</a>.</label></li>
-    <li><label><input type="checkbox"> Vá ao atendimento presencial marcado (<span class="en">Intreo Centre</span>) levando os documentos da etapa 1.</label></li>
-    <li><label><input type="checkbox"> Receba a carta com o seu PPSN pelo correio. Guarde em lugar seguro.</label></li>
-  </ol>
-  <div class="alerta"><strong>Erro comum:</strong> ir ao atendimento sem comprovante de endereço com o seu nome. Sem ele, o pedido pode ser recusado e você precisa remarcar.</div>
+<!-- TELA 2: perguntas -->
+<section id="tela-diagnostico" aria-labelledby="t-pergunta" hidden>
+  <div class="card">
+    <p class="contador" id="contador" aria-live="polite"></p>
+    <div class="barra" aria-hidden="true"><span id="barra"></span></div>
+    <h2 id="t-pergunta" tabindex="-1"></h2>
+    <p id="pergunta-dica" class="porque"></p>
+    <div class="respostas" id="respostas"></div>
+    <div class="ajuda" id="ajuda" hidden></div>
+    <button type="button" class="voltar" id="voltar">← Voltar à pergunta anterior</button>
+  </div>
 </section>
 
-<section class="etapa" id="e3" aria-labelledby="t3">
-  <h2 id="t3"><span class="num" aria-hidden="true">3</span>Deixe o MyGovID “Verificado” (SAFE Nível 2)</h2>
-  <p>A conta básica não basta para vários serviços. A versão <strong>verificada</strong> confirma que você é você. É a etapa onde mais gente trava.</p>
-  <ol class="passos">
-    <li><label><input type="checkbox"> Faça o registro de identidade com foto (<span class="en">SAFE registration</span>). Normalmente é feito no Intreo, junto com o pedido do cartão <span class="en">Public Services Card</span>.</label></li>
-    <li><label><input type="checkbox"> No MyGovID, cadastre e confirme o seu celular (chega um código por SMS).</label></li>
-    <li><label><input type="checkbox"> Clique em verificar a conta (<span class="en">Verify my account</span>) e informe o seu PPSN.</label></li>
-    <li><label><input type="checkbox"> Confira se a conta aparece como <span class="en">Verified</span>.</label></li>
-  </ol>
-  <div class="alerta"><strong>Se der errado:</strong> o nome e a data de nascimento precisam estar <em>exatamente</em> iguais ao cadastro do PPSN. Se não passar, não fique tentando várias vezes: veja as opções de verificação atuais em <a href="https://www.mygovid.ie" target="_blank" rel="noopener">mygovid.ie</a> ou peça ajuda (veja “Onde pedir ajuda”).</div>
-</section>
-
-<section class="etapa" id="e4" aria-labelledby="t4">
-  <h2 id="t4"><span class="num" aria-hidden="true">4</span>Acesse a Revenue (myAccount)</h2>
-  <p>A Revenue é a receita federal da Irlanda. É nela que você avisa que começou a trabalhar.</p>
-  <ol class="passos">
-    <li><label><input type="checkbox"> Abra <a href="https://www.revenue.ie" target="_blank" rel="noopener">revenue.ie</a> e entre em <span class="en">myAccount</span>.</label></li>
-    <li><label><input type="checkbox"> Escolha uma forma de entrar: com o MyGovID verificado <strong>ou</strong> criando um cadastro com PPSN, data de nascimento, endereço, celular e e-mail.</label></li>
-    <li><label><input type="checkbox"> Se fez o cadastro: espere o código de ativação que chega <strong>por carta</strong> no seu endereço e ative a conta.</label></li>
-  </ol>
-  <div class="alerta"><strong>Atenção:</strong> o código por carta pode levar alguns dias úteis. Se o seu endereço mudou, atualize antes, senão a carta vai para o lugar errado.</div>
-</section>
-
-<section class="etapa" id="e5" aria-labelledby="t5">
-  <h2 id="t5"><span class="num" aria-hidden="true">5</span>Registre o seu emprego (evite o imposto de emergência)</h2>
-  <p>Se o seu emprego não estiver registrado na Revenue, o patrão é obrigado a descontar <strong>imposto de emergência</strong> (<span class="en">Emergency Tax</span>), que é bem mais alto.</p>
-  <ol class="passos">
-    <li><label><input type="checkbox"> No myAccount, abra <span class="en">Jobs and Pensions</span> e escolha adicionar um emprego (<span class="en">Add job</span>).</label></li>
-    <li><label><input type="checkbox"> Informe o número de registro do empregador e a data em que começou.</label></li>
-    <li><label><input type="checkbox"> Confira os seus créditos de imposto (<span class="en">Tax Credits</span>), que diminuem o imposto que você paga.</label></li>
-    <li><label><input type="checkbox"> No próximo contracheque (<span class="en">payslip</span>), confira se o desconto deixou de ser “Emergency”.</label></li>
-  </ol>
-  <div class="alerta"><strong>Já pagou imposto de emergência?</strong> Depois que o emprego estiver registrado, o valor pago a mais normalmente é devolvido nos pagamentos seguintes. Se não voltar, confira no myAccount ou peça ajuda.</div>
-</section>
-
-<section class="etapa" id="ajuda" aria-labelledby="t6">
-  <h2 id="t6">Onde pedir ajuda</h2>
-  <ul>
-    <li><strong>Citizens Information</strong>: orientação gratuita, por telefone, online ou presencial (há atendimento em Cork). <a href="https://www.citizensinformation.ie" target="_blank" rel="noopener">citizensinformation.ie</a></li>
-    <li><strong>MyGovID</strong>: página de ajuda em <a href="https://www.mygovid.ie" target="_blank" rel="noopener">mygovid.ie</a>.</li>
-    <li><strong>Revenue</strong>: contatos e mensagens pelo próprio myAccount em <a href="https://www.revenue.ie" target="_blank" rel="noopener">revenue.ie</a>.</li>
-  </ul>
-</section>
-
-<section class="etapa" id="glossario" aria-labelledby="t7">
-  <h2 id="t7">Glossário: termos em inglês explicados</h2>
-  <label for="busca">Procure uma palavra:</label>
-  <input type="search" id="busca" placeholder="Ex.: RPN, Eircode, payslip">
-  <p id="sem-resultado" hidden>Nenhum termo encontrado.</p>
-  <dl id="termos">
-    <dt>PPSN (Personal Public Service Number)</dt><dd>Seu número pessoal na Irlanda, usado para trabalho, impostos e serviços públicos.</dd>
-    <dt>MyGovID</dt><dd>Login único do governo irlandês. Existe a conta básica e a verificada.</dd>
-    <dt>SAFE Level 2 / Verified</dt><dd>Nível de confirmação de identidade (com foto e documentos) exigido para os serviços mais importantes.</dd>
-    <dt>Public Services Card (PSC)</dt><dd>Cartão do governo ligado ao seu PPSN, emitido após o registro com foto.</dd>
-    <dt>Intreo Centre</dt><dd>Posto de atendimento do Departamento de Proteção Social, onde se faz o PPSN.</dd>
-    <dt>MyWelfare</dt><dd>Site do Departamento de Proteção Social para pedidos como o PPSN.</dd>
-    <dt>Revenue</dt><dd>Órgão de impostos da Irlanda (como a Receita Federal).</dd>
-    <dt>myAccount</dt><dd>Área pessoal no site da Revenue.</dd>
-    <dt>Proof of address</dt><dd>Comprovante de endereço com o seu nome.</dd>
-    <dt>Eircode</dt><dd>Código postal do endereço (parecido com o CEP).</dd>
-    <dt>Employer Registration Number</dt><dd>Número do seu empregador na Revenue. Peça ao RH.</dd>
-    <dt>Emergency Tax</dt><dd>Imposto alto descontado quando o seu emprego não está registrado na Revenue.</dd>
-    <dt>RPN (Revenue Payroll Notification)</dt><dd>Aviso que a Revenue manda ao empregador dizendo quanto imposto descontar de você.</dd>
-    <dt>Tax Credits</dt><dd>Créditos que diminuem o imposto que você paga.</dd>
-    <dt>Payslip</dt><dd>Contracheque: o detalhe do seu salário e dos descontos.</dd>
-    <dt>Activation code</dt><dd>Código enviado por carta para ativar a conta da Revenue.</dd>
-  </dl>
+<!-- TELA 3: plano -->
+<section id="tela-plano" aria-labelledby="t-plano" hidden>
+  <div class="card">
+    <h1 id="t-plano" tabindex="-1">Seu plano</h1>
+    <p id="resumo-plano" class="lead"></p>
+    <p class="contador" id="progresso" aria-live="polite"></p>
+  </div>
+  <div id="lista-tarefas"></div>
+  <div class="card parabens" id="tudo-pronto" hidden>
+    <h2>🎉 Tudo resolvido!</h2>
+    <p>Você concluiu todos os passos do seu plano. Guarde as cartas e os números em um lugar seguro: você vai precisar deles de novo.</p>
+  </div>
+  <div class="card">
+    <h2>Esse guia te ajudou?</h2>
+    <p>Sua opinião leva menos de 1 minuto e ajuda outras pessoas que estão chegando.</p>
+    <div class="acoes">
+      <a class="botao principal" id="link-opiniao" href="#" target="_blank" rel="noopener" hidden>Dar minha opinião</a>
+      <button type="button" id="refazer">Refazer as perguntas</button>
+      <button type="button" onclick="window.print()">Imprimir meu plano</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Precisa de ajuda de uma pessoa?</h2>
+    <p>O <strong>Citizens Information</strong> dá orientação <strong>gratuita</strong> sobre esses assuntos, por telefone, online ou presencialmente, e tem atendimento em Cork: <a href="https://www.citizensinformation.ie" target="_blank" rel="noopener">citizensinformation.ie</a>.</p>
+  </div>
 </section>
 
 </main>
 
 <footer>
-  <p>Projeto de Atividade Extensionista – UNINTER. Guia de apoio, não é um site oficial do governo irlandês.</p>
-  <div class="barra">
-    <a id="link-opiniao" class="botao" href="#" target="_blank" rel="noopener" hidden>Dar minha opinião sobre o guia</a>
-    <button type="button" id="zerar">Apagar meu progresso</button>
-  </div>
+  <p>Este guia é um apoio em linguagem simples e <strong>não é um site do governo</strong>. As regras podem mudar: sempre confira o link oficial de cada passo. Projeto de Atividade Extensionista – UNINTER.</p>
+  <button type="button" class="pequeno" id="apagar">Apagar meus dados deste aparelho</button>
 </footer>
 
 <dialog id="boas-vindas" aria-labelledby="bv-titulo">
-  <form method="dialog" id="form-nome">
-    <h2 id="bv-titulo">Bem-vindo(a)!</h2>
+  <form method="dialog">
+    <h2 id="bv-titulo">Olá! 👋</h2>
     <p>Este guia faz parte de um projeto da faculdade. Para comprovar que ele foi usado, registramos o seu <strong>primeiro nome</strong>, a data e o horário do acesso. Nada mais é guardado.</p>
     <label for="nome">Seu primeiro nome:</label>
     <input type="text" id="nome" autocomplete="given-name" maxlength="60">
-    <div class="barra">
-      <button type="submit" value="ok" class="principal">Entrar no guia</button>
-      <button type="submit" value="anonimo">Entrar sem informar o nome</button>
+    <div class="acoes">
+      <button type="submit" value="ok" class="principal">Começar</button>
+      <button type="submit" value="anonimo">Entrar sem dizer o nome</button>
     </div>
   </form>
 </dialog>
 
 <script>
-// Registro de acessos: preencha com o seu Google Forms (veja o README). Vazio = nada é enviado.
+// Registro de acessos e feedback (Google Forms). Vazio = nada é enviado. Veja o README.
 var CONFIG = {
   formulario: 'https://docs.google.com/forms/d/e/1FAIpQLSeuMxuuaJMHk80-fXdHQhB33WkjCVkeAuz0awIisSP8S18QfQ/formResponse',
   campoNome: 'entry.1515318502',
   linkOpiniao: 'https://docs.google.com/forms/d/e/1FAIpQLSfNeqYi0xH-OqxDJeg8WECQJQx8r_WS4T08SgBpg8aeaTls3A/viewform'
 };
 
+// Termos em inglês que viram botões "explica pra mim" dentro dos textos.
+var TERMOS = {
+  'PPS': 'Seu número pessoal na Irlanda (Personal Public Service Number). Você precisa dele para trabalhar, pagar impostos e usar serviços públicos.',
+  'MyGovID': 'O login único dos sites do governo irlandês. Existe a conta básica (só e-mail) e a verificada, que confirma a sua identidade.',
+  'MyWelfare': 'Site do Departamento de Proteção Social. É por ele que você pede o número PPS.',
+  'Intreo': 'Posto de atendimento do governo onde você vai pessoalmente para o pedido do PPS.',
+  'Public Services Card': 'Cartão do governo com a sua foto, ligado ao seu número PPS.',
+  'Revenue': 'A “Receita Federal” da Irlanda. Cuida dos impostos que saem do seu salário.',
+  'myAccount': 'A sua área pessoal no site da Revenue.',
+  'Emergency Tax': 'Um imposto bem mais alto que o empregador é obrigado a descontar quando o seu emprego não está registrado na Revenue.',
+  'Eircode': 'O código postal do endereço, parecido com o CEP. Todo endereço na Irlanda tem um.',
+  'payslip': 'O contracheque: o papel ou e-mail que mostra o seu salário e os descontos.',
+  'Employer Registration Number': 'O número do seu empregador na Revenue. Peça ao RH ou ao seu chefe.',
+  'Tax Credits': 'Descontos no imposto a que você tem direito. Eles diminuem o imposto que sai do seu salário.',
+  'MyEnquiries': 'O canal de mensagens dentro do myAccount para falar por escrito com a Revenue.'
+};
+
+// O que cada passo do plano pede. {Termo} vira um botão com a explicação.
+var TAREFAS = {
+  endereco: {
+    titulo: 'Consiga um comprovante de endereço no seu nome',
+    porque: 'Sem ele, o pedido do {PPS} costuma ser recusado. É o motivo mais comum de ter que voltar outro dia.',
+    precisa: ['Um documento recente com o seu nome e o seu endereço na Irlanda'],
+    passos: [
+      'Veja o que você já tem: extrato de banco, conta de luz, gás ou internet, ou uma carta oficial.',
+      'Se nada estiver no seu nome, peça ao banco um extrato com o seu endereço, ou peça ao proprietário um contrato de aluguel no seu nome.',
+      'Confira na página do {MyWelfare} quais documentos são aceitos hoje.'
+    ],
+    cuidado: 'O nome no comprovante precisa estar igual ao do passaporte.',
+    link: ['https://services.mywelfare.ie', 'Abrir o MyWelfare']
+  },
+  pps: {
+    titulo: 'Peça o seu número PPS',
+    porque: 'O {PPS} é a chave de tudo: sem ele, você não verifica o {MyGovID} nem registra o seu emprego.',
+    precisa: ['Passaporte', 'Comprovante de endereço no seu nome', 'Um e-mail e um celular que recebe SMS'],
+    passos: [
+      'Crie uma conta básica no {MyGovID}. Ela só pede e-mail.',
+      'Entre no {MyWelfare} com essa conta e faça o pedido do PPS.',
+      'Vá ao atendimento marcado no {Intreo} com os documentos.',
+      'Espere a carta com o seu número PPS chegar pelo correio e guarde-a bem.'
+    ],
+    cuidado: 'Leve os documentos originais. Ir sem o comprovante de endereço é o erro mais comum.',
+    link: ['https://services.mywelfare.ie', 'Fazer o pedido no MyWelfare']
+  },
+  mygovid: {
+    titulo: 'Deixe a sua conta MyGovID verificada',
+    porque: 'A conta básica não abre os serviços importantes. A verificada prova que você é você e libera a Revenue e outros serviços.',
+    precisa: ['Seu número PPS', 'Um celular que recebe SMS', 'O registro com foto feito no {Intreo}, junto com o {Public Services Card}'],
+    passos: [
+      'Entre no {MyGovID} e cadastre o seu celular. Vai chegar um código por SMS.',
+      'Clique para verificar a conta (Verify my account) e informe o seu número PPS.',
+      'Confira se a conta aparece como “Verified”.'
+    ],
+    cuidado: 'O nome e a data de nascimento precisam estar exatamente iguais aos do cadastro do PPS. Se der erro, não fique tentando várias vezes: veja as opções no site do MyGovID ou peça ajuda ao Citizens Information.',
+    link: ['https://www.mygovid.ie', 'Abrir o MyGovID']
+  },
+  revenue: {
+    titulo: 'Entre na sua conta da Revenue',
+    porque: 'É pela {Revenue} que você avisa que começou a trabalhar e confere quanto imposto paga.',
+    precisa: ['Seu número PPS', 'O seu {MyGovID} verificado, ou o seu endereço para receber um código pelo correio'],
+    passos: [
+      'Abra o site da Revenue e clique em {myAccount}.',
+      'Entre com o MyGovID verificado. Se ainda não tiver, faça o cadastro com o seu PPS e endereço.',
+      'Se fez o cadastro, espere o código de ativação que chega por carta e ative a conta.'
+    ],
+    cuidado: 'O código pelo correio pode levar alguns dias. Se o seu endereço mudou, atualize antes.',
+    link: ['https://www.revenue.ie', 'Abrir a Revenue']
+  },
+  emprego: {
+    titulo: 'Registre o seu emprego na Revenue',
+    porque: 'Se o seu emprego não estiver registrado, o patrão é obrigado a descontar o {Emergency Tax}, um imposto bem mais alto.',
+    precisa: ['O {Employer Registration Number} (peça ao RH)', 'A data em que você começou a trabalhar'],
+    passos: [
+      'No {myAccount}, abra “Jobs and Pensions” e escolha adicionar um emprego (Add job).',
+      'Informe o número do empregador e a data de início.',
+      'Confira os seus {Tax Credits}.',
+      'No próximo {payslip}, veja se o desconto deixou de ser “Emergency”.'
+    ],
+    cuidado: 'Faça isso logo na primeira semana de trabalho. Quanto antes, menos imposto a mais você paga.',
+    link: ['https://www.revenue.ie', 'Abrir a Revenue']
+  },
+  emergencia: {
+    titulo: 'Recupere o imposto pago a mais (Emergency Tax)',
+    porque: 'Depois que o emprego está registrado, o valor descontado a mais normalmente volta nos pagamentos seguintes. Veja se isso está acontecendo.',
+    precisa: ['Acesso ao {myAccount} da Revenue', 'Seus últimos {payslip}s'],
+    passos: [
+      'No myAccount, confira se o emprego aparece em “Jobs and Pensions”.',
+      'Peça ao RH para atualizar o seu cadastro de imposto com a Revenue no próximo pagamento.',
+      'Compare os próximos payslips: o desconto deve diminuir e a diferença deve voltar.',
+      'Se não voltar em algumas semanas, mande uma mensagem pelo {MyEnquiries}, dentro do myAccount.'
+    ],
+    cuidado: 'Não peça para o patrão “parar de descontar”: ele é obrigado por lei. O caminho é registrar o emprego.',
+    link: ['https://www.revenue.ie', 'Abrir a Revenue']
+  }
+};
+
+// Perguntas. "se" decide se a pergunta aparece, a partir das respostas anteriores.
+var PERGUNTAS = [
+  { id: 'pps', texto: 'Você já tem o seu número PPS?', dica: 'É um número com 7 dígitos e 1 ou 2 letras, que chega numa carta do governo.',
+    naosei: 'Se você nunca recebeu uma carta com esse número, a resposta é “não”.' },
+  { id: 'endereco', texto: 'Você tem um comprovante de endereço na Irlanda com o seu nome?', dica: 'Por exemplo: extrato de banco, conta de luz ou contrato de aluguel.',
+    se: function (r) { return r.pps === 'nao'; }, naosei: 'Procure um documento recente que tenha o seu nome e o seu endereço daqui.' },
+  { id: 'mygovid', texto: 'A sua conta MyGovID já está verificada?', dica: 'Entre em mygovid.ie: se aparecer “Verified”, está verificada.',
+    se: function (r) { return r.pps === 'sim'; }, naosei: 'Se você só criou a conta com e-mail e senha, ela ainda não está verificada.' },
+  { id: 'trabalha', texto: 'Você já trabalha ou vai começar a trabalhar na Irlanda?', dica: 'Pode ser emprego fixo, meio período ou temporário.' },
+  { id: 'registrado', texto: 'Você já registrou esse emprego na Revenue?', dica: 'O registro é feito por você no site da Revenue, em “Jobs and Pensions”.',
+    se: function (r) { return r.trabalha === 'sim' && r.pps === 'sim'; }, naosei: 'Se você nunca entrou no site da Revenue para isso, provavelmente não registrou.' },
+  { id: 'emergencia', texto: 'No seu contracheque aparece “Emergency” ou um desconto muito alto?', dica: 'Olhe o payslip mais recente, perto da palavra “Tax” ou “PAYE”.',
+    se: function (r) { return r.trabalha === 'sim'; }, naosei: 'Se o desconto de imposto parece muito alto para o que você ganha, responda “sim”.' }
+];
+
+// Regra central: das respostas para a lista ordenada de passos.
+function montarPlano(r) {
+  var p = [];
+  var temPps = r.pps === 'sim';
+  if (!temPps) { if (r.endereco !== 'sim') p.push('endereco'); p.push('pps', 'mygovid'); }
+  else if (r.mygovid !== 'sim') p.push('mygovid');
+  if (r.trabalha === 'sim') {
+    if (!temPps || r.registrado !== 'sim') p.push('revenue', 'emprego');
+    if (r.emergencia === 'sim') p.push('emergencia');
+  }
+  return p;
+}
+
 (function () {
-  var CHAVE = 'guia-irlanda-acesso';
-  var dlg = document.getElementById('boas-vindas');
+  var CHAVE = 'guia-irlanda-v2';
+  var estado = { respostas: {}, feitos: {}, plano: null };
+  try { estado = JSON.parse(localStorage.getItem(CHAVE)) || estado; } catch (e) {}
+  function salvar() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
 
-  function registrar(nome) {
-    if (!CONFIG.formulario || !CONFIG.campoNome) return;
-    var dados = new URLSearchParams(); dados.append(CONFIG.campoNome, nome);
-    // O Google Forms grava data e horário sozinho; no-cors porque a resposta não é lida.
-    fetch(CONFIG.formulario, { method: 'POST', mode: 'no-cors', body: dados }).catch(function () {});
-  }
+  var $ = function (id) { return document.getElementById(id); };
+  var historico = [];
 
-  var nome = localStorage.getItem(CHAVE);
-  if (nome !== null) {
-    registrar(nome);
-  } else if (typeof dlg.showModal === 'function') {
-    dlg.showModal();
-    document.getElementById('nome').focus();
-  }
-  dlg.addEventListener('close', function () {
-    var n = dlg.returnValue === 'ok' ? document.getElementById('nome').value.trim() : '';
-    n = n || 'Anônimo';
-    try { localStorage.setItem(CHAVE, n); } catch (e) {}
-    registrar(n);
-  });
-
-  if (CONFIG.linkOpiniao) {
-    var a = document.getElementById('link-opiniao');
-    a.href = CONFIG.linkOpiniao; a.hidden = false;
-  }
-})();
-
-(function () {
-  var CHAVE = 'guia-irlanda-v1';
-  var caixas = Array.prototype.slice.call(document.querySelectorAll('ol.passos input[type=checkbox]'));
-  var salvo = {};
-  try { salvo = JSON.parse(localStorage.getItem(CHAVE)) || {}; } catch (e) { salvo = {}; }
-
-  function atualizar() {
-    var feitos = caixas.filter(function (c) { return c.checked; }).length;
-    document.getElementById('texto-progresso').textContent = 'Progresso: ' + feitos + ' de ' + caixas.length + ' passos';
-    var barra = document.getElementById('barra-progresso');
-    barra.max = caixas.length; barra.value = feitos;
-    document.querySelectorAll('section.etapa').forEach(function (s) {
-      var cs = s.querySelectorAll('ol.passos input');
-      var tudo = cs.length > 0 && Array.prototype.every.call(cs, function (c) { return c.checked; });
-      s.classList.toggle('feita', tudo);
+  function esc(t) { return t.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function comTermos(t) {
+    return esc(t).replace(/\{([^}]+)\}/g, function (_, k) {
+      return TERMOS[k] ? '<button type="button" class="termo" aria-expanded="false" data-termo="' + k + '">' + k + '</button>' : k;
     });
   }
 
-  caixas.forEach(function (c, i) {
-    c.checked = !!salvo[i];
-    c.addEventListener('change', function () {
-      salvo[i] = c.checked;
-      try { localStorage.setItem(CHAVE, JSON.stringify(salvo)); } catch (e) {}
-      atualizar();
+  function mostrar(tela) {
+    ['inicio', 'diagnostico', 'plano'].forEach(function (t) { $('tela-' + t).hidden = t !== tela; });
+    window.scrollTo(0, 0);
+  }
+
+  // --- Perguntas ---
+  function proxima(depoisDe) {
+    var i = depoisDe === undefined ? 0 : depoisDe + 1;
+    for (; i < PERGUNTAS.length; i++) if (!PERGUNTAS[i].se || PERGUNTAS[i].se(estado.respostas)) return i;
+    return -1;
+  }
+
+  function perguntar(i) {
+    var q = PERGUNTAS[i];
+    // O total depende das respostas, então mostramos o máximo possível (5).
+    $('contador').textContent = 'Pergunta ' + (historico.length + 1) + ' · no máximo 5 perguntas';
+    $('barra').style.width = (historico.length / 5 * 100) + '%';
+    $('t-pergunta').textContent = q.texto;
+    $('pergunta-dica').textContent = q.dica;
+    $('ajuda').hidden = true;
+    $('voltar').hidden = historico.length === 0;
+    var box = $('respostas'); box.innerHTML = '';
+    [['sim', 'Sim'], ['nao', 'Não'], ['naosei', 'Não sei']].forEach(function (op) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = op[1]; b.className = op[0] === 'sim' ? 'principal' : '';
+      b.onclick = function () {
+        if (op[0] === 'naosei') { $('ajuda').textContent = '💡 ' + q.naosei; $('ajuda').hidden = false; $('ajuda').setAttribute('tabindex', '-1'); $('ajuda').focus(); return; }
+        estado.respostas[q.id] = op[0];
+        historico.push(i);
+        var n = proxima(i);
+        if (n === -1) finalizar(); else perguntar(n);
+      };
+      box.appendChild(b);
     });
+    $('t-pergunta').focus();
+  }
+
+  function comecarDiagnostico() {
+    estado.respostas = {}; historico = [];
+    mostrar('diagnostico'); perguntar(proxima());
+  }
+
+  $('voltar').onclick = function () {
+    var i = historico.pop();
+    if (i === undefined) return;
+    delete estado.respostas[PERGUNTAS[i].id];
+    perguntar(i);
+  };
+
+  function finalizar() {
+    estado.plano = montarPlano(estado.respostas);
+    estado.feitos = {};
+    salvar(); desenharPlano();
+  }
+
+  // --- Plano ---
+  function desenharPlano() {
+    mostrar('plano');
+    var lista = $('lista-tarefas'); lista.innerHTML = '';
+    var plano = estado.plano || [];
+    $('resumo-plano').textContent = plano.length
+      ? 'Pelas suas respostas, você tem ' + plano.length + (plano.length > 1 ? ' passos' : ' passo') + ' para resolver, nesta ordem. Comece pelo primeiro: os outros dependem dele.'
+      : 'Pelas suas respostas, você já está com tudo em dia. Se algo mudar, como um emprego novo, refaça as perguntas.';
+    plano.forEach(function (id, n) {
+      var t = TAREFAS[id], card = document.createElement('article');
+      card.className = 'card tarefa'; card.dataset.id = id;
+      var passos = t.passos.map(function (s, k) {
+        var chave = id + '-' + k;
+        return '<li><label><input type="checkbox" data-chave="' + chave + '"' + (estado.feitos[chave] ? ' checked' : '') + '> ' + comTermos(s) + '</label></li>';
+      }).join('');
+      card.innerHTML =
+        '<span class="etiqueta"></span>' +
+        '<h3>' + (n + 1) + '. ' + esc(t.titulo) + '</h3>' +
+        '<p class="porque">' + comTermos(t.porque) + '</p>' +
+        '<details><summary>O que você vai precisar</summary><ul class="leve">' + t.precisa.map(function (s) { return '<li>' + comTermos(s) + '</li>'; }).join('') + '</ul></details>' +
+        '<ol class="passos">' + passos + '</ol>' +
+        '<div class="cuidado"><strong>⚠️ Cuidado:</strong> ' + comTermos(t.cuidado) + '</div>' +
+        '<a class="botao" href="' + t.link[0] + '" target="_blank" rel="noopener">' + esc(t.link[1]) + ' ↗</a>';
+      lista.appendChild(card);
+    });
+    atualizarProgresso();
+    $('t-plano').focus();
+  }
+
+  function atualizarProgresso() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.tarefa'));
+    var achouAgora = false, total = 0, feitos = 0;
+    cards.forEach(function (c) {
+      var cs = c.querySelectorAll('input[type=checkbox]');
+      var ok = Array.prototype.every.call(cs, function (x) { return x.checked; });
+      Array.prototype.forEach.call(cs, function (x) { total++; if (x.checked) feitos++; });
+      c.classList.toggle('feita', ok);
+      var agora = !ok && !achouAgora; if (agora) achouAgora = true;
+      c.classList.toggle('agora', agora);
+      c.querySelector('.etiqueta').textContent = ok ? '✓ Feito' : agora ? '👉 Faça isto agora' : 'Depois';
+    });
+    $('progresso').textContent = total ? 'Você concluiu ' + feitos + ' de ' + total + ' etapas.' : '';
+    $('tudo-pronto').hidden = !(cards.length && !achouAgora);
+  }
+
+  document.addEventListener('change', function (e) {
+    var c = e.target.dataset && e.target.dataset.chave;
+    if (!c) return;
+    estado.feitos[c] = e.target.checked; salvar(); atualizarProgresso();
   });
 
-  // Tolerância ao erro: confirmação antes de apagar.
-  document.getElementById('zerar').addEventListener('click', function () {
-    if (!confirm('Apagar todo o seu progresso? Os passos marcados serão desmarcados.')) return;
-    salvo = {}; localStorage.removeItem(CHAVE);
-    caixas.forEach(function (c) { c.checked = false; });
-    atualizar();
+  // Termos: abre e fecha a explicação logo abaixo do botão.
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.termo');
+    if (!b) return;
+    e.preventDefault();
+    var aberto = b.getAttribute('aria-expanded') === 'true';
+    if (aberto) { var velho = document.getElementById(b.getAttribute('aria-controls')); if (velho) velho.remove(); }
+    else {
+      // A explicação aparece depois do parágrafo, para não quebrar a frase no meio.
+      var d = document.createElement('div'); d.className = 'definicao'; d.setAttribute('role', 'note');
+      d.id = 'def-' + Math.random().toString(36).slice(2);
+      d.innerHTML = '<strong>' + esc(b.dataset.termo) + ':</strong> ' + esc(TERMOS[b.dataset.termo]);
+      b.setAttribute('aria-controls', d.id);
+      var alvo = b.closest('label, p, .cuidado');
+      if (alvo) alvo.after(d); else (b.closest('li') || b.parentNode).appendChild(d);
+    }
+    b.setAttribute('aria-expanded', String(!aberto));
   });
 
-  // Tamanho do texto e contraste, lembrados entre visitas.
-  var pref = {};
-  try { pref = JSON.parse(localStorage.getItem(CHAVE + '-pref')) || {}; } catch (e) {}
+  // Navegação
+  document.querySelectorAll('[data-ir]').forEach(function (b) {
+    b.onclick = function () { b.dataset.ir === 'plano' ? desenharPlano() : comecarDiagnostico(); };
+  });
+  document.querySelectorAll('[data-atalho]').forEach(function (b) {
+    b.onclick = function () {
+      var a = b.dataset.atalho;
+      estado.plano = a === 'pps' ? ['endereco', 'pps', 'mygovid'] : a === 'mygovid' ? ['mygovid'] : ['emprego', 'emergencia'];
+      estado.feitos = {}; salvar(); desenharPlano();
+    };
+  });
+  $('refazer').onclick = comecarDiagnostico;
+  $('apagar').onclick = function () {
+    if (!confirm('Apagar o seu plano e as suas respostas deste aparelho?')) return;
+    localStorage.removeItem(CHAVE); estado = { respostas: {}, feitos: {}, plano: null };
+    $('continuar').hidden = true; mostrar('inicio'); $('t-inicio').focus();
+  };
+  $('continuar').hidden = !estado.plano;
+
+  // Letra e contraste
+  var pref = {}; try { pref = JSON.parse(localStorage.getItem('guia-irlanda-pref')) || {}; } catch (e) {}
   var fs = pref.fs || 18;
   function aplicar() {
     document.documentElement.style.setProperty('--fs', fs + 'px');
     document.body.classList.toggle('contraste', !!pref.contraste);
-    document.getElementById('contraste').setAttribute('aria-pressed', String(!!pref.contraste));
-    pref.fs = fs;
-    try { localStorage.setItem(CHAVE + '-pref', JSON.stringify(pref)); } catch (e) {}
+    $('contraste').setAttribute('aria-pressed', String(!!pref.contraste));
+    pref.fs = fs; try { localStorage.setItem('guia-irlanda-pref', JSON.stringify(pref)); } catch (e) {}
   }
-  document.getElementById('maior').onclick = function () { fs = Math.min(fs + 2, 30); aplicar(); };
-  document.getElementById('menor').onclick = function () { fs = Math.max(fs - 2, 14); aplicar(); };
-  document.getElementById('contraste').onclick = function () { pref.contraste = !pref.contraste; aplicar(); };
-
-  // Busca no glossário (ignora acentos e maiúsculas).
-  function norm(t) { return t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
-  document.getElementById('busca').addEventListener('input', function () {
-    var q = norm(this.value.trim()), achou = 0;
-    document.querySelectorAll('#termos dt').forEach(function (dt) {
-      var dd = dt.nextElementSibling;
-      var ok = !q || norm(dt.textContent + ' ' + dd.textContent).indexOf(q) !== -1;
-      dt.hidden = dd.hidden = !ok; if (ok) achou++;
-    });
-    document.getElementById('sem-resultado').hidden = achou > 0;
-  });
-
+  $('maior').onclick = function () { fs = Math.min(fs + 2, 30); aplicar(); };
+  $('menor').onclick = function () { fs = Math.max(fs - 2, 14); aplicar(); };
+  $('contraste').onclick = function () { pref.contraste = !pref.contraste; aplicar(); };
   aplicar();
-  atualizar();
+
+  // Feedback
+  if (CONFIG.linkOpiniao) { $('link-opiniao').href = CONFIG.linkOpiniao; $('link-opiniao').hidden = false; }
+
+  // Registro de acessos
+  var dlg = $('boas-vindas'), CHAVE_NOME = 'guia-irlanda-acesso';
+  function registrar(nome) {
+    if (!CONFIG.formulario || !CONFIG.campoNome) return;
+    if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return; // testes locais não contam como acesso
+    var dados = new URLSearchParams(); dados.append(CONFIG.campoNome, nome);
+    // O Google Forms grava data e horário sozinho; no-cors porque a resposta não é lida.
+    fetch(CONFIG.formulario, { method: 'POST', mode: 'no-cors', body: dados }).catch(function () {});
+  }
+  var nome = localStorage.getItem(CHAVE_NOME);
+  if (nome !== null) registrar(nome);
+  else if (typeof dlg.showModal === 'function') { dlg.showModal(); $('nome').focus(); }
+  dlg.addEventListener('close', function () {
+    var n = (dlg.returnValue === 'ok' ? $('nome').value.trim() : '') || 'Anônimo';
+    try { localStorage.setItem(CHAVE_NOME, n); } catch (e) {}
+    registrar(n);
+    $('t-inicio').focus();
+  });
 })();
+
+// Autoteste da regra do plano: abra a página com ?teste e veja o console.
+if (location.search.indexOf('teste') !== -1) {
+  var casos = [
+    [{ pps: 'nao', endereco: 'nao', trabalha: 'nao' }, 'endereco,pps,mygovid'],
+    [{ pps: 'nao', endereco: 'sim', trabalha: 'sim', emergencia: 'sim' }, 'pps,mygovid,revenue,emprego,emergencia'],
+    [{ pps: 'sim', mygovid: 'sim', trabalha: 'sim', registrado: 'sim', emergencia: 'nao' }, ''],
+    [{ pps: 'sim', mygovid: 'nao', trabalha: 'sim', registrado: 'nao', emergencia: 'sim' }, 'mygovid,revenue,emprego,emergencia'],
+    [{ pps: 'sim', mygovid: 'sim', trabalha: 'sim', registrado: 'sim', emergencia: 'sim' }, 'emergencia']
+  ];
+  var falhas = casos.filter(function (c) { return montarPlano(c[0]).join(',') !== c[1]; });
+  console.log(falhas.length ? 'AUTOTESTE FALHOU: ' + JSON.stringify(falhas) : 'AUTOTESTE OK (' + casos.length + ' casos)');
+}
 </script>
 </body>
 </html>

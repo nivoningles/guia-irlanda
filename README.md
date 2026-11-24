@@ -5,44 +5,56 @@ Protótipo feito a partir do Trabalho Final da Atividade Extensionista I (UNINTE
 
 - **Público:** imigrantes e novos residentes em Cork, com letramento digital básico.
 - **ODS:** 4 (Educação de qualidade) e 10 (Redução das desigualdades).
-- **Como abrir:** dê dois cliques em `index.html`. Funciona em qualquer navegador, inclusive no celular, sem instalar nada nem precisar de servidor.
+- **Online:** https://nivoningles.github.io/guia-irlanda/
+- **Como abrir no computador:** dê dois cliques em `index.html`. Funciona em qualquer navegador, inclusive no celular, sem instalar nada.
+
+## Como o guia funciona
+
+1. **Início:** a pessoa escolhe entre descobrir o próximo passo ou ir direto a um problema comum (Emergency Tax, MyGovID que não verifica, tirar o PPS).
+2. **Perguntas:** no máximo 5 perguntas de sim ou não, uma por tela. "Não sei" mostra uma dica de como descobrir a resposta, e "Voltar" corrige uma resposta.
+3. **Plano:** o guia monta só os passos que aquela pessoa precisa, na ordem certa, e destaca "Faça isto agora". Cada passo explica por que ele importa, o que levar, os passos para marcar, o erro mais comum e o link oficial.
+4. **Termos em inglês:** viram botões; ao tocar, a explicação aparece logo abaixo.
+
+A regra que monta o plano é a função `montarPlano`. Para rodar o autoteste, abra a página com `?teste` no endereço e veja o console.
 
 ## Barreiras do levantamento e como o guia responde
 
 | Barreira identificada no trabalho | Resposta no guia |
 |---|---|
-| O fluxo PPSN → MyGovID → Revenue não é explicado de ponta a ponta | 5 etapas em ordem, com uma lista de passos que você marca e um link oficial em cada etapa |
-| Verificação SAFE Nível 2 sem tutorial | Etapa 3 dedicada, com os pré-requisitos e o que fazer se der erro |
-| Penalização financeira (Emergency Tax) | Etapa 5 explica o registro do emprego e a devolução do imposto pago a mais |
-| Falta de tolerância ao erro | Caixas "Erro comum / Se der errado", progresso salvo e confirmação antes de apagar |
-| Termos técnicos em inglês | Glossário com busca, que ignora acentos e maiúsculas; termos em inglês aparecem em itálico no texto |
+| O fluxo PPSN → MyGovID → Revenue não é explicado de ponta a ponta | Diagnóstico por perguntas que monta um plano personalizado, na ordem certa |
+| Verificação SAFE Nível 2 sem tutorial | Passo dedicado, com os pré-requisitos e o que fazer se der erro, e um atalho direto na tela inicial |
+| Penalização financeira (Emergency Tax) | Pergunta sobre o contracheque e um passo para recuperar o imposto pago a mais |
+| Falta de tolerância ao erro | Botão "Voltar", opção "Não sei" com dica, alertas de cuidado, progresso salvo e confirmação antes de apagar |
+| Termos técnicos em inglês | Cada termo é um botão que mostra a explicação em português |
 
 ## Requisitos funcionais (RF)
 
-- **RF01:** mostrar o passo a passo em etapas ordenadas (documentos, PPSN, MyGovID verificado, Revenue, registro do emprego).
-- **RF02:** deixar o usuário marcar cada passo e ver o progresso geral.
-- **RF03:** salvar o progresso no aparelho entre uma visita e outra.
-- **RF04:** mostrar os erros comuns e o que fazer em cada etapa.
-- **RF05:** oferecer um glossário de termos em inglês, com busca.
-- **RF06:** indicar onde pedir ajuda (Citizens Information, MyGovID, Revenue).
-- **RF07:** permitir imprimir o guia.
+- **RF01:** perguntar a situação da pessoa (sim / não / não sei) e permitir voltar.
+- **RF02:** montar um plano personalizado, só com os passos necessários e na ordem certa.
+- **RF03:** destacar o próximo passo e mostrar o progresso.
+- **RF04:** salvar o plano e o progresso no aparelho entre uma visita e outra.
+- **RF05:** mostrar, em cada passo, o motivo, o que levar, os erros comuns e o link oficial.
+- **RF06:** explicar os termos em inglês dentro do próprio texto.
+- **RF07:** indicar onde pedir ajuda gratuita (Citizens Information).
+- **RF08:** registrar os acessos e coletar feedback (Google Forms).
+- **RF09:** permitir imprimir o plano.
 
 ## Requisitos não funcionais (RNF)
 
-- **RNF01:** linguagem simples em português, com o termo em inglês ao lado.
-- **RNF02:** acessibilidade: HTML semântico, navegação por teclado, link "Pular para o conteúdo", foco visível, áreas de toque de 44 px e suporte a leitor de tela (`aria-live` no progresso).
-- **RNF03:** controle do tamanho da fonte e modo de alto contraste, que ficam salvos.
-- **RNF04:** um único arquivo, sem dependências e sem servidor; funciona offline depois de baixado.
-- **RNF05:** privacidade: nenhum dado sai do aparelho. Só o estado das caixas marcadas fica salvo, no `localStorage`.
+- **RNF01:** linguagem simples em português, falando diretamente com a pessoa, com o termo em inglês explicado.
+- **RNF02:** acessibilidade: HTML semântico, navegação por teclado, link "Pular para o conteúdo", foco movido para o título de cada tela, botões de pelo menos 44 px e suporte a leitor de tela.
+- **RNF03:** controle do tamanho da letra e modo de alto contraste, que ficam salvos.
+- **RNF04:** um único arquivo, sem dependências e sem servidor.
+- **RNF05:** privacidade: só o primeiro nome é enviado, para o registro de acessos. As respostas e o plano ficam apenas no aparelho.
 - **RNF06:** respeita a configuração de reduzir movimento (`prefers-reduced-motion`).
 
 ## Os 7 Princípios do Desenho Universal
 
 1. **Uso equitativo:** gratuito, funciona no celular e no computador, sem cadastro.
 2. **Flexibilidade no uso:** permite ler na tela, imprimir, aumentar a fonte e usar alto contraste.
-3. **Uso simples e intuitivo:** uma etapa por vez, numerada, na ordem certa.
+3. **Uso simples e intuitivo:** uma pergunta por tela e um plano que destaca só o próximo passo.
 4. **Informação perceptível:** os termos em inglês vêm explicados, e o estado de cada etapa aparece por cor e por texto.
-5. **Tolerância ao erro:** alertas de erro comum, passos que você pode desmarcar e confirmação antes de apagar o progresso.
+5. **Tolerância ao erro:** botão "Voltar", opção "Não sei" com dica, alertas de erro comum, passos que você pode desmarcar e confirmação antes de apagar.
 6. **Baixo esforço físico:** botões grandes e uso completo pelo teclado.
 7. **Tamanho e espaço para uso:** layout que se adapta ao tamanho da tela e áreas de toque amplas.
 
