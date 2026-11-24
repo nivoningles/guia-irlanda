@@ -500,7 +500,8 @@ function montarPlano(r) {
   var dlg = $('boas-vindas'), CHAVE_NOME = 'guia-irlanda-acesso';
   function registrar(nome) {
     if (!CONFIG.formulario || !CONFIG.campoNome) return;
-    if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return; // testes locais não contam como acesso
+    // Só conta acesso no site publicado; aberto no computador ou em teste local, não registra.
+    if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
     var dados = new URLSearchParams(); dados.append(CONFIG.campoNome, nome);
     // O Google Forms grava data e horário sozinho; no-cors porque a resposta não é lida.
     fetch(CONFIG.formulario, { method: 'POST', mode: 'no-cors', body: dados }).catch(function () {});
