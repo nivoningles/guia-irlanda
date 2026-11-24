@@ -28,6 +28,14 @@
   button, .botao { font:inherit; min-height:48px; padding:10px 18px; border-radius:12px; border:2px solid var(--accent); background:var(--card); color:var(--accent); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:600; }
   button.principal, .botao.principal { background:var(--accent); color:var(--accent-fg); }
   button.pequeno { min-height:44px; padding:6px 12px; font-size:.85rem; }
+  ol.ordem { list-style:none; counter-reset:o; padding:0; margin:14px 0; display:grid; gap:8px; }
+  ol.ordem li { counter-increment:o; background:var(--soft); border-radius:12px; padding:10px 14px 10px 56px; position:relative; }
+  ol.ordem li::before { content:counter(o); position:absolute; left:12px; top:50%; transform:translateY(-50%); width:32px; height:32px; border-radius:50%; background:var(--accent); color:var(--accent-fg); font-weight:700; display:flex; align-items:center; justify-content:center; }
+  ol.ordem li span { display:block; color:var(--muted); font-size:.92rem; }
+  h2.sub { font-size:1.15rem; margin:18px 0 6px; }
+  ol.como { list-style:none; padding:0; margin:0 0 6px; }
+  ol.como li { padding:4px 0; }
+  ol.como li span { margin-right:8px; }
   .atalhos { display:grid; gap:10px; margin-top:12px; }
   .atalhos button { justify-content:flex-start; text-align:left; width:100%; }
   .respostas { display:grid; gap:10px; margin-top:18px; }
@@ -85,15 +93,27 @@
 <!-- TELA 1: início -->
 <section id="tela-inicio" aria-labelledby="t-inicio">
   <div class="card">
-    <h1 id="t-inicio" tabindex="-1">Chegou na Irlanda e não sabe por onde começar com os documentos?</h1>
-    <p class="lead">PPS, MyGovID, Revenue, Emergency Tax… Parece muita coisa, mas existe uma ordem certa. Responda algumas perguntas de <strong>sim ou não</strong> e eu mostro <strong>exatamente o que você precisa fazer agora</strong>, em português e sem complicação.</p>
+    <h1 id="t-inicio" tabindex="-1">Resolva os seus primeiros documentos na Irlanda, um passo de cada vez</h1>
+    <p class="lead">Para trabalhar e <strong>não pagar imposto a mais</strong>, quem chega na Irlanda precisa de 3 coisas, nesta ordem:</p>
+    <ol class="ordem">
+      <li><strong>Número PPS</strong> <span>o seu “CPF” irlandês</span></li>
+      <li><strong>MyGovID verificado</strong> <span>o login dos sites do governo</span></li>
+      <li><strong>Cadastro na Revenue</strong> <span>a “Receita Federal”, para registrar o seu emprego</span></li>
+    </ol>
+    <p>Quem pula uma etapa ou faz fora de ordem costuma travar, ou paga o <strong>Emergency Tax</strong>, um desconto bem maior no salário.</p>
+    <h2 class="sub">Como este guia ajuda</h2>
+    <ol class="como">
+      <li><span aria-hidden="true">❓</span> Você responde até 5 perguntas de sim ou não.</li>
+      <li><span aria-hidden="true">📋</span> O guia mostra só o que falta para você, na ordem certa.</li>
+      <li><span aria-hidden="true">✅</span> Você segue um passo de cada vez, em português simples.</li>
+    </ol>
     <div class="acoes">
-      <button type="button" class="principal" data-ir="diagnostico">Descobrir o meu próximo passo →</button>
+      <button type="button" class="principal" data-ir="diagnostico">Começar: descobrir o que falta para mim →</button>
     </div>
-    <p class="contador">Leva cerca de 1 minuto. Você não precisa se cadastrar.</p>
+    <p class="contador">Leva cerca de 1 minuto. Grátis e sem cadastro.</p>
   </div>
   <div class="card">
-    <h2>Ou vá direto ao seu problema:</h2>
+    <h2>Já sabe qual é o seu problema? Vá direto:</h2>
     <div class="atalhos">
       <button type="button" data-atalho="emergencia">💸 Meu salário veio com um desconto enorme (Emergency Tax)</button>
       <button type="button" data-atalho="mygovid">🔒 Não consigo verificar a minha conta MyGovID</button>
