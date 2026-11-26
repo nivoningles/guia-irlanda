@@ -501,7 +501,9 @@ function montarPlano(r) {
   function registrar(nome) {
     if (!CONFIG.formulario || !CONFIG.campoNome) return;
     // Só conta acesso no site publicado; aberto no computador ou em teste local, não registra.
-    if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+    if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || location.search.indexOf('teste') !== -1) return;
+    // Recarregar a página na mesma aba não conta como novo acesso.
+    try { if (sessionStorage.getItem(CHAVE_NOME)) return; sessionStorage.setItem(CHAVE_NOME, '1'); } catch (e) {}
     var dados = new URLSearchParams(); dados.append(CONFIG.campoNome, nome);
     // O Google Forms grava data e horário sozinho; no-cors porque a resposta não é lida.
     fetch(CONFIG.formulario, { method: 'POST', mode: 'no-cors', body: dados }).catch(function () {});
